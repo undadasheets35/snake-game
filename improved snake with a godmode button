@@ -1,40 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title></title>
+    <meta name="generator" content="LibreOffice 7.4.3.2 (Linux)">
+    <meta name="created" content="00:00:00">
+    <meta name="changed" content="00:00:00">
+    <style type="text/css">
+        @page {
+            size: 8.27in 11.69in;
+            margin: 0.79in
+        }
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Snake Game</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div id="game-container">
-        <canvas id="gameCanvas" width="400" height="400"></canvas>
-        <div id="controls">
-            <button id="godModeButton">God Mode</button>
-            <button id="increaseSizeButton">Increase Size</button>
-            <button id="decreaseSizeButton">Decrease Size</button>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html> 
+        p {
+            line-height: 115%;
+            margin-bottom: 0.1in;
+            background: transparent
+        }
 
-<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake Game</title>
-    <style>
-        canvas {
-            border: 1px solid black;
+        pre {
+            background: transparent
+        }
+
+        pre.western {
+            font-family: "Liberation Mono", monospace;
+            font-size: 10pt
+        }
+
+        pre.cjk {
+            font-family: "NSimSun", monospace;
+            font-size: 10pt
+        }
+
+        pre.ctl {
+            font-family: "Liberation Mono", monospace;
+            font-size: 10pt
         }
     </style>
 </head>
-<body>
-    <canvas id="gameCanvas" width="400" height="400"></canvas>
-    <button id="godModeButton">Activate God Mode</button>
-    <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
+
+<body lang="en-US">
+    <pre class="western">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Simple Snake Game&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;game-container&quot;&gt;
+        &lt;canvas id=&quot;gameCanvas&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;&lt;/canvas&gt;
+        &lt;div id=&quot;controls&quot;&gt;
+            &lt;button id=&quot;godModeButton&quot;&gt;God Mode&lt;/button&gt;
+            &lt;button id=&quot;increaseSizeButton&quot;&gt;Increase Size&lt;/button&gt;
+            &lt;button id=&quot;decreaseSizeButton&quot;&gt;Decrease Size&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt; 
+
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Snake Game&lt;/title&gt;
+    &lt;style&gt;
+        canvas {
+            border: 1px solid black;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;canvas id=&quot;gameCanvas&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;&lt;/canvas&gt;
+    &lt;button id=&quot;godModeButton&quot;&gt;Activate God Mode&lt;/button&gt;
+    &lt;script&gt;
+        const canvas = document.getElementById(&apos;gameCanvas&apos;);
+        const ctx = canvas.getContext(&apos;2d&apos;);
         const gridSize = 20;
         const snakeSpeed = 100;
         let snake = [{ x: 200, y: 200 }];
@@ -45,29 +88,29 @@
         let gameOver = false;
         let godMode = false;
 
-        document.getElementById('godModeButton').addEventListener('click', () => {
+        document.getElementById(&apos;godModeButton&apos;).addEventListener(&apos;click&apos;, () =&gt; {
             godMode = !godMode;
             if (godMode) {
-                document.getElementById('godModeButton').innerHTML = "Deactivate God Mode";
+                document.getElementById(&apos;godModeButton&apos;).innerHTML = &quot;Deactivate God Mode&quot;;
             } else {
-                document.getElementById('godModeButton').innerHTML = "Activate God Mode";
+                document.getElementById(&apos;godModeButton&apos;).innerHTML = &quot;Activate God Mode&quot;;
             }
         });
 
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            for (let i = 0; i < snake.length; i++) {
-                ctx.fillStyle = (i === 0) ? 'green' : 'blue';
+            for (let i = 0; i &lt; snake.length; i++) {
+                ctx.fillStyle = (i === 0) ? &apos;green&apos; : &apos;blue&apos;;
                 ctx.fillRect(snake[i].x, snake[i].y, gridSize, gridSize);
             }
 
-            ctx.fillStyle = 'red';
+            ctx.fillStyle = &apos;red&apos;;
             ctx.fillRect(food.x, food.y, gridSize, gridSize);
 
-            ctx.font = '20px Arial';
-            ctx.fillStyle = 'black';
-            ctx.fillText('Score: ' + score, 10, 30);
+            ctx.font = &apos;20px Arial&apos;;
+            ctx.fillStyle = &apos;black&apos;;
+            ctx.fillText(&apos;Score: &apos; + score, 10, 30);
         }
 
         function update() {
@@ -75,15 +118,15 @@
 
             let head = { x: snake[0].x + dx, y: snake[0].y + dy };
 
-            if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height) {
+            if (head.x &lt; 0 || head.x &gt;= canvas.width || head.y &lt; 0 || head.y &gt;= canvas.height) {
                 if (!godMode) {
                     gameOver = true;
                 }
                 return;
             }
 
-            for (let i = 1; i < snake.length; i++) {
-                if (head.x === snake[i].x && head.y === snake[i].y) {
+            for (let i = 1; i &lt; snake.length; i++) {
+                if (head.x === snake[i].x &amp;&amp; head.y === snake[i].y) {
                     if (!godMode) {
                         gameOver = true;
                     }
@@ -91,7 +134,7 @@
                 }
             }
 
-            if (head.x === food.x && head.y === food.y) {
+            if (head.x === food.x &amp;&amp; head.y === food.y) {
                 score++;
                 let newFoodX = Math.floor(Math.random() * (canvas.width / gridSize)) * gridSize;
                 let newFoodY = Math.floor(Math.random() * (canvas.height / gridSize)) * gridSize;
@@ -109,23 +152,26 @@
             setTimeout(update, snakeSpeed);
         }
 
-        document.addEventListener('keydown', event => {
-            if (event.key === 'ArrowUp' && dy === 5) {
+        document.addEventListener(&apos;keydown&apos;, event =&gt; {
+            if (event.key === &apos;ArrowUp&apos; &amp;&amp; dy === 5) {
                 dx = 5;
                 dy = -gridSize;
-            } else if (event.key === 'ArrowDown' && dy === 5) {
+            } else if (event.key === &apos;ArrowDown&apos; &amp;&amp; dy === 5) {
                 dx = 5;
                 dy = gridSize;
-            } else if (event.key === 'ArrowLeft' && dx === 5) {
+            } else if (event.key === &apos;ArrowLeft&apos; &amp;&amp; dx === 5) {
                 dx = -gridSize;
                 dy = 5;
-            } else if (event.key === 'ArrowRight' && dx === 5) {
+            } else if (event.key === &apos;ArrowRight&apos; &amp;&amp; dx === 5) {
                 dx = gridSize;
                 dy = 5;
             }
         });
 
         update();
-    </script>
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
 </body>
+
 </html>
