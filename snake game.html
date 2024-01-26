@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Snake Game</title>
+    <style>
+      #game {
+        position: relative;
+        height: 400px;
+        width: 400px;
+        border: 1px solid black;
+      }
+
+      .dot {
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        background: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game"></div>
+    <button onclick="startGame()">Start Game</button>
+    <script>
+      const gameBoard = document.getElementById('game');
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      gameBoard.appendChild(dot);
+
+      let dotPosition = { top: 0, left: 0 };
+
+      function setDotPosition() {
+        dot.style.top = `${dotPosition.top}px`;
+        dot.style.left = `${dotPosition.left}px`;
+      }
+
+      function changeDotPosition(horizontal, vertical) {
+        dotPosition = {
+          top: dotPosition.top + vertical,
+          left: dotPosition.left + horizontal
+        };
+        setDotPosition();
+      }
+
+      document.onkeydown = function(e) {
+        switch (e.keyCode) {
+          case 37:
+            changeDotPosition(-20, 0);
+            break;
+          case 38:
+            changeDotPosition(0, -20);
+            break;
+          case 39:
+            changeDotPosition(20, 0);
+            break;
+          case 40:
+            changeDotPosition(0, 20);
+            break;
+        }
+      };
+
+      function startGame() {
+        dotPosition = { top: 0, left: 0 };
+        setDotPosition();
+      }
+    </script>
+  </body>
+</html>
