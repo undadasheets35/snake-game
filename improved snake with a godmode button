@@ -1,7 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Snake Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+        <div id="controls">
+            <button id="godModeButton">God Mode</button>
+            <button id="increaseSizeButton">Increase Size</button>
+            <button id="decreaseSizeButton">Decrease Size</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
+
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Game</title>
     <style>
